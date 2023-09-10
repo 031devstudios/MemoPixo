@@ -8,6 +8,8 @@ screen = pygame.display.set_mode((940,720))
 pygame.display.set_caption("MemoPixo")
 clock = pygame.time.Clock()
 
+background = pygame.image.load('graphics/background.png')
+
 blue_square = pygame.Surface((150, 150))
 blue_square.fill('Blue')
 
@@ -28,7 +30,8 @@ while running:
         if event.type == pygame.QUIT:
             running = False
     
-    screen.fill("black")
+
+    screen.blit(background,(0,0))
     screen.blit(blue_square,(200,100))
     screen.blit(red_square,(600,100))
     screen.blit(green_square,(200,400))
