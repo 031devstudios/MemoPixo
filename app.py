@@ -1,44 +1,40 @@
 # Example file showing a basic pygame "game loop"
 
-# imports pygame library to use with Python
 import pygame
 
-# pygame setup - needed to run pygame
 pygame.init()
 
-# creates a display screen and sets window size
-screen = pygame.display.set_mode((1280,720))
-# changes the window title
+screen = pygame.display.set_mode((940,720))
 pygame.display.set_caption("MemoPixo")
-# creates a clock object
 clock = pygame.time.Clock()
-# declares the running variable to run the while loop for the game
+
+blue_square = pygame.Surface((150, 150))
+blue_square.fill('Blue')
+
+red_square = pygame.Surface((150, 150))
+red_square.fill('Red')
+
+green_square = pygame.Surface((150, 150))
+green_square.fill('Green')
+
+yellow_square = pygame.Surface((150, 150))
+yellow_square.fill('Yellow')
+
 running = True
 
-
-
-# while this loop is TRUE the game will run
 while running:
-    # poll for events
-    # draw all elements
-    # update everything
-    # pygame.QUIT event means the user clicked X to close your window
-  
+      
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-    # updates everything on the screen
+    
+    screen.fill("black")
+    screen.blit(blue_square,(200,100))
+    screen.blit(red_square,(600,100))
+    screen.blit(green_square,(200,400))
+    screen.blit(yellow_square,(600,400))
+
     pygame.display.update()
-
-    # fill the screen with a color to wipe away anything from last frame
-    screen.fill("purple")
-
-    # RENDER YOUR GAME HERE
-
-    # flip() the display to put your work on screen
-    pygame.display.flip()
-
-    # limits FPS to 60
     clock.tick(60)  
 
 pygame.quit()
