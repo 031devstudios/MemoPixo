@@ -36,7 +36,23 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            left, middle, right = pygame.mouse.get_pressed()
+            mouse_pos = pygame.mouse.get_pos()
+
+            if (left):
+                print(mouse_pos)
+            elif (middle):
+                print("Middle")
+            elif (right):
+                print("Right")
     
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            mouse_pos = pygame.mouse.get_pos()
+            if mouse_pos > (156, 50) and mouse_pos < (356, 250):
+                print("Blue Square Clicked")
+            
     
     screen.blit(background,(0,0))
     pygame.draw.rect(screen, 'BLUE', blue_square)
