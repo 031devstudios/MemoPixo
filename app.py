@@ -29,6 +29,7 @@ yellow_square_y = 325
 boarder_width = 5
 game_started = False
 enter_pressed = False
+game_state = 0
 
 # draws the background
 background = pygame.image.load('graphics/background.png')
@@ -56,6 +57,7 @@ while running:
             mouse_pos = pygame.mouse.get_pos()
             if mouse_pos[0] in range(blue_square_x, (blue_square_x + square_x_size), 1) and mouse_pos[1] in range(blue_square_y, (blue_square_y + square_y_size), 1):
                 print("Blue")
+                print(game_state)
             elif mouse_pos[0] in range(red_square_x, (red_square_x + square_x_size), 1) and mouse_pos[1] in range(red_square_y, (red_square_y + square_y_size), 1):
                 print("Red")
             elif mouse_pos[0] in range(green_square_x, (green_square_x + square_x_size), 1) and mouse_pos[1] in range(green_square_y, (green_square_y + square_y_size), 1):
@@ -78,19 +80,20 @@ while running:
     pygame.draw.rect(screen, 'GOLD3', yellow_square)
     pygame.draw.rect(screen, 'BLACK', (yellow_square_x, yellow_square_y, square_x_size, square_y_size), boarder_width)
 
-    if game_started == False:
+    if game_state == 0: # game stopped state
         screen.blit(start_game_text, (250, 260))
     else:
         screen.blit(start_game_text, (9999, 9999))
-    
     pygame.display.update()
     
     if enter_pressed == True:
-        print("Game Started")
-        game_started = True
+        game_state = 1
         enter_pressed = False
 
-    if game_started == True:
+    if game_state == 1: # game started state
+        pass
+
+    if game_state == 2: # game over state
         pass
 
 
