@@ -30,6 +30,7 @@ boarder_width = 5
 game_started = False
 enter_pressed = False
 game_state = 0
+score = 0
 
 # draws the background
 background = pygame.image.load('graphics/background.png')
@@ -37,6 +38,8 @@ background = pygame.image.load('graphics/background.png')
 # creates a font and text to use in game
 font = pygame.font.Font('freesansbold.ttf', 40)
 start_game_text = font.render('Press Enter to Start Game', True, 'WHITE', 'BLACK')
+
+
 
 # draws the 4 coloured squares
 blue_square = pygame.Rect(blue_square_x, blue_square_y, square_x_size, square_y_size)
@@ -48,11 +51,13 @@ running = True
 
 # main game loop
 while running:
-      
+
+    # check if close button is clicked  
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-    
+
+        # check if a square has been clicked
         if event.type == pygame.MOUSEBUTTONDOWN:
             mouse_pos = pygame.mouse.get_pos()
             if mouse_pos[0] in range(blue_square_x, (blue_square_x + square_x_size), 1) and mouse_pos[1] in range(blue_square_y, (blue_square_y + square_y_size), 1):
@@ -65,12 +70,15 @@ while running:
             elif mouse_pos[0] in range(yellow_square_x, (yellow_square_x + square_x_size), 1) and mouse_pos[1] in range(yellow_square_y, (yellow_square_y + square_y_size), 1):
                 print("Yellow")
         
+        # check if Enter has been pressed
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RETURN:
                 enter_pressed = True
             
-        
+    # display background    
     screen.blit(background,(0,0))
+
+    # draw four coloured squares and outline them
     pygame.draw.rect(screen, 'DARKBLUE', blue_square)
     pygame.draw.rect(screen, 'BLACK', (blue_square_x, blue_square_y, square_x_size, square_y_size), boarder_width)
     pygame.draw.rect(screen, 'DARKRED', red_square)
@@ -80,26 +88,31 @@ while running:
     pygame.draw.rect(screen, 'GOLD3', yellow_square)
     pygame.draw.rect(screen, 'BLACK', (yellow_square_x, yellow_square_y, square_x_size, square_y_size), boarder_width)
 
-    if game_state == 0: # game stopped state
+    # draw scoreboard
+    score_text = font.render(f"Score: {game_state}", True, 'WHITE', 'BLACK')
+    screen.blit(score_text, (10, 700))
+
+    # game stopped state
+    if game_state == 0: 
         screen.blit(start_game_text, (250, 260))
     else:
         screen.blit(start_game_text, (9999, 9999))
     pygame.display.update()
-    
+
     if enter_pressed == True:
         game_state = 1
         enter_pressed = False
 
-    if game_state == 1: # game started state
+    # game started state
+    if game_state == 1:
         pass
 
-    if game_state == 2: # game over state
+    # game over state
+    if game_state == 2: 
         pass
 
 
     pygame.display.update()
-    
-    
     clock.tick(60)
 
 pygame.quit()
