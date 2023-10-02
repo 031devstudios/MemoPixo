@@ -16,7 +16,7 @@ import time,os,sys,random
 
 player_name = ""
 menu_selection = ""
-difficulty = 1
+global difficulty
 sequence = []
 player_answer = ""
 player_sequence = []
@@ -52,8 +52,17 @@ def main_menu():
     if menu_selection == "n":
         pass
     elif menu_selection == "s":
+        global difficulty
         difficulty = int(typingInput("Set the difficulty.\n1 = Easy\n2 = Medium\n3 = Hard"))
         if difficulty == 1:
+            typingPrint(f"Difficulty set to {difficulty}.")
+            time.sleep(1)
+            main_menu()
+        elif difficulty == 2:
+            typingPrint(f"Difficulty set to {difficulty}.")
+            time.sleep(1)
+            main_menu()
+        elif difficulty == 3:
             typingPrint(f"Difficulty set to {difficulty}.")
             time.sleep(1)
             main_menu()
@@ -141,6 +150,7 @@ if __name__ == "__main__":
     typingPrint("1...")
     time.sleep(1)
     while game_running == True:
+        clearScreen()
         main()
         player_score = add_score(player_score)
         typingPrint(f"Your score is: {player_score}")
