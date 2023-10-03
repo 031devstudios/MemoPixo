@@ -16,7 +16,7 @@ import time,os,sys,random
 
 player_name = ""
 menu_selection = ""
-global difficulty
+difficulty = 1
 sequence = []
 player_answer = ""
 player_sequence = []
@@ -49,11 +49,11 @@ def clearScreen():
 def main_menu():
     typingPrint("\n\nN = New Game\nS = Settings\nH = Help\nQ = Quit")
     menu_selection = typingInput("")
-    if menu_selection == "n":
+    global difficulty
+    if menu_selection == "n" or menu_selection == "N":
         pass
-    elif menu_selection == "s":
-        global difficulty
-        difficulty = int(typingInput("Set the difficulty.\n1 = Easy\n2 = Medium\n3 = Hard"))
+    elif menu_selection == "s" or menu_selection == "S":
+        difficulty = int(typingInput("Set the difficulty. This affects the speed of the displayed sequence.\n1 = Easy\n2 = Medium\n3 = Hard"))
         if difficulty == 1:
             typingPrint(f"Difficulty set to {difficulty}.")
             time.sleep(1)
@@ -66,10 +66,10 @@ def main_menu():
             typingPrint(f"Difficulty set to {difficulty}.")
             time.sleep(1)
             main_menu()
-    elif menu_selection == "h":
+    elif menu_selection == "h" or menu_selection == "H":
         typingPrint("The game will display a sequence of colours that the player will be required to remember.\nAt the end of the sequence the player will be required to type in the sequence in the correct order.\nIf the sequence is correct, a new sequence will be displayed and the player will score one point.\nIf an incorect sequence is entered, the game will end and display the players score.")
         main_menu()
-    elif menu_selection == "q":
+    elif menu_selection == "q" or menu_selection == "Q":
        typingPrint("Thank you for playing. Goodbye.")
        clearScreen()
        sys.exit()
@@ -79,23 +79,30 @@ def generate_sequence():
     n = random.randint(1,4)
     sequence.append(n)
 
-def display_colours(sequence):
+def display_colours(sequence, difficulty):
+    if difficulty == 1:
+        difficulty_time = 1
+    elif difficulty == 2:
+        difficulty_time = 0.65
+    elif difficulty == 3:
+        difficulty_time = 0.3
+
     for i in sequence:
         if i == 1:
             typingPrint("RED")
-            time.sleep(1)
+            time.sleep(difficulty_time)
             clearScreen()
         elif i == 2:
             typingPrint("BLUE")
-            time.sleep(1)
+            time.sleep(difficulty_time)
             clearScreen()
         elif i == 3:
             typingPrint("YELLOW")
-            time.sleep(1)
+            time.sleep(difficulty_time)
             clearScreen()
         elif i == 4:
             typingPrint("GREEN")
-            time.sleep(1)
+            time.sleep(difficulty_time)
             clearScreen()
 
 def check_answer(sequence, player_score):
@@ -125,7 +132,7 @@ def add_score(score):
 
 def main():
     generate_sequence()
-    display_colours(sequence)
+    display_colours(sequence, difficulty)
     check_answer(sequence, player_score)
     player_converted_answer.clear()
     time.sleep(1)
@@ -153,8 +160,6 @@ if __name__ == "__main__":
         clearScreen()
         main()
         player_score = add_score(player_score)
-        typingPrint(f"Your score is: {player_score}")
-        time.sleep(1)
-        typingPrint("\nGet ready for the next round...")
+        typingPrint(f"Your score is: {player_score}\nGet ready for the next round...")
         time.sleep(1.5)
         clearScreen()
