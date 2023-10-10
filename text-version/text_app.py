@@ -70,9 +70,10 @@ def main_menu():
         typingPrint("The game will display a sequence of colours that the player will be required to remember.\nAt the end of the sequence the player will be required to type in the sequence in the correct order.\nIf the sequence is correct, a new sequence will be displayed and the player will score one point.\nIf an incorect sequence is entered, the game will end and display the players score.")
         main_menu()
     elif menu_selection == "q" or menu_selection == "Q":
-       typingPrint("Thank you for playing. Goodbye.")
-       clearScreen()
-       sys.exit()
+        typingPrint("Thank you for playing. Goodbye.")
+        time.sleep(1)
+        clearScreen()
+        sys.exit()
     return difficulty
 
 def generate_sequence():
