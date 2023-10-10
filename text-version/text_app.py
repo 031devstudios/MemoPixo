@@ -117,6 +117,8 @@ def check_answer(sequence, player_score):
             player_converted_answer.append(3)
         elif i == 'g' or i == 'G' or i == 'GREEN' or i == 'green':
             player_converted_answer.append(4)
+        else:
+            print("Incorrect entry. Type R, B, G, Y.")
     if player_converted_answer == sequence:
         typingPrint("CORECT!")
         player_converted_answer.clear()
