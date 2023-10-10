@@ -74,6 +74,10 @@ def main_menu():
         time.sleep(1)
         clearScreen()
         sys.exit()
+    else:
+        typingPrint("Incorrect entry. Please try again.")
+        main_menu()
+            
     return difficulty
 
 def generate_sequence():
@@ -107,18 +111,25 @@ def display_colours(sequence, difficulty):
             clearScreen()
 
 def check_answer(sequence, player_score):
-    player_answer = list(map(str, input("> ")))
-    for i in player_answer:
-        if i == 'r' or i == 'R' or i == 'RED' or i == 'red':
-            player_converted_answer.append(1)
-        elif i == 'b' or i == 'B' or i == 'BLUE' or i == 'blue':
-            player_converted_answer.append(2)
-        elif i == 'y' or i == 'Y' or i == 'YELLOW' or i == 'yellow':
-            player_converted_answer.append(3)
-        elif i == 'g' or i == 'G' or i == 'GREEN' or i == 'green':
-            player_converted_answer.append(4)
-        else:
-            print("Incorrect entry. Type R, B, G, Y.")
+    check = True
+    while check:
+        player_answer = list(map(str, input("> ")))
+        for i in player_answer:
+            if i == 'r' or i == 'R' or i == 'RED' or i == 'red':
+                player_converted_answer.append(1)
+                check = False
+            elif i == 'b' or i == 'B' or i == 'BLUE' or i == 'blue':
+                player_converted_answer.append(2)
+                check = False
+            elif i == 'y' or i == 'Y' or i == 'YELLOW' or i == 'yellow':
+                player_converted_answer.append(3)
+                check = False
+            elif i == 'g' or i == 'G' or i == 'GREEN' or i == 'green':
+                player_converted_answer.append(4)
+                check = False
+            else:
+                print("Incorrect entry. Type R - RED, B - BLUE, G - GREEN, Y - YELLOW.")
+                player_converted_answer.clear()
     if player_converted_answer == sequence:
         typingPrint("CORECT!")
         player_converted_answer.clear()
@@ -153,7 +164,7 @@ if __name__ == "__main__":
     difficulty = main_menu()
     clearScreen()
     time.sleep(1)
-    typingPrint("Game starting in 3...")
+    typingPrint(f"Difficulty set to level {difficulty}. Game starting in 3...")
     time.sleep(1)
     typingPrint("2...")
     time.sleep(1)
