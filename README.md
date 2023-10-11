@@ -11,6 +11,8 @@ This is a memory game that displays a sequence of colours for the player to reme
 
 ## Demo
 
+![Demo File](https://github.com/031devstudios/memopixo/blob/master/demo/demo.gif)
+
 ![](https://s6.gifyu.com/images/S6lca.gif)
 
 
