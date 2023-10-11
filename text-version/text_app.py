@@ -131,7 +131,7 @@ def check_answer(sequence, player_score):
                 print("Incorrect entry. Type R - RED, B - BLUE, G - GREEN, Y - YELLOW.")
                 player_converted_answer.clear()
     if player_converted_answer == sequence:
-        typingPrint("CORECT!")
+        typingPrint("CORRECT!")
         player_converted_answer.clear()
     else:
         typingPrint(f"You failed. Game Over! Your final score is {player_score}.")
