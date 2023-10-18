@@ -41,7 +41,7 @@ Enjoy the game!
 ![Python 3](https://img.shields.io/badge/python-3-blue.svg)
 [![Visitors](https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2F031devstudios%2FMemoPixo&label=visitors&countColor=%2337d67a&style=flat)](https://visitorbadge.io/status?path=https%3A%2F%2Fgithub.com%2F031devstudios%2FMemoPixo)
 
-[![Discord Invite](https://dcbadge.vercel.app/api/server/ufD7ZwrD9A)](https://discord.gg/ufD7ZwrD9A)
+![Discord Banner 4](https://discordapp.com/api/guilds/1164227706972553378/widget.png?style=banner4)
 
 
 
